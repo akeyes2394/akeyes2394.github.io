@@ -90,24 +90,45 @@
         <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
           <div class="resume-content">
             <h3 class="mb-0">NFL Player Success</h3>
-            <div class="subheading mb-3">Predicting college football players degree of success entering the NFL</div>
-            <p>lorem ipsum</p>
+            <div class="subheading mb-3">Predicting college football players degree of success entering the NFL
+            <br>
+            <a href="https://github.com/akeyes2394/nfl_success_analysis" target="_blank">GitHub Link</a>
+            </div>
+            <p>Being an avid football fan, when given the opportunity to work on a project of my choosing for my GA capstone project I naturally chose to do some analysis around the NFL.  Rather than choosing one of the most frequently performed football analysis, those being NFL draft predictions, or rating NFL draft picks, I chose to perform my own version of this.  I was still interested in examining NFL draft prospects, but my focus was to examine all factors of player performance and skill to try and predict how successful a player will be in the NFL, not solely based on where they were picked in the draft.
+            <br>
+            Once I had my goal in mind, I began working on collecting as much data as possible on players.  I started by scraping Football-Reference.com, first for every player that was drafted each year, and then for their college performance statistics, such as passing yards or completion percentage for a quarter back for example.  I also got information such as the team a player was on, the conference they were in, and the NFL team they were drafted to.
+            <br>
+            I began modeling using a player’s average position grade (from profootballfocus.com) over their first four seasons in the NFL as a target variable.  I was able to achieve moderate success in my predictions using robust Neural Nets and creating separate models for different positions.  My best Mean Squared Error was just about 570, equating to an error term of about 24 points on average.  Given that the target that I was trying to predict was on a scale of 1-100, this result leaves room for improvement, as currently my model would likely predict clearly successful players as successful and vice versa unsuccessful players as unsuccessful, but predictions for players in the middle would be unreliable.</p>
           </div>
         </div>
 
         <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
           <div class="resume-content">
             <h3 class="mb-0">Impacts by Industry of Natural Diasters</h3>
-            <div class="subheading mb-3">Examining How Natural Diasters Effect Different Industries</div>
-            <p>lorem ipsum</p>
+            <div class="subheading mb-3">Examining How Natural Diasters Effect Different Industries
+            <a href="https://github.com/akeyes2394/NewLightTechQ11" target="_blank">GitHub Link</a>
+            </div>
+            <p>This was a group project where our goal was to model the effect that a given natural disaster has on industries in a given city.  We began by trying turn this conceptual problem into measurable datapoints.  Based off the prompt we were working with, we were directed to use sources such as Glassdoor or Indeed to collect job posting information as a measure of economic value of a given industry.  Our idea was that we could look at the frequency of job postings each day and create an aggregate figure for monetary economic value from the salaries, and segment by industry based on the type of job that was posted.
+            <br>
+            Our challenge with this was that these sites, as well as almost all online job boards, do not make their data publicly available via API.  When we were able to identify one smaller site (Adzuna.com) that did provide an open API, at that point we realized that they only made it available for about 30-90 days, and when we queried farther back than that there were low or no postings at all.  In clicking through other job boards, we realized this was the case with most if not all of them, so even if we were able to build out our own scraping tool, we would have no ability to look at posting history.  We would have to deploy it to scrape data every day going forward for the city in question to get the required data to perform this kind of analysis.
+            <br>
+            This was not doable in the time scope that we had to accomplish the task, so we decided to pivot our approach to looking at employment statistics rather than raw job postings.  The only place we were able to find a data source that provided employment information by industry with a location smaller than state was the Bureau of Labor Statistics website, that allowed us to query for monthly employment levels in different industries for any county in the United States.  We were able to build a function that ran this query for the specified years and county to examine how employment levels were impacted by the disaster event.
+            <br>
+            For our final product we were able to create SARIMAX models that predicted what employment levels would look like in a given city without the disaster event, so that they could be compared to the actual levels post event.  In addition, our team built out the framework for a scraper that could be deployed to collect the job posting data from our original approach every day that could be used in a larger scale project.</p>
           </div>
         </div>
 
         <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
           <div class="resume-content">
             <h3 class="mb-0">Reddit Language Classification</h3>
-            <div class="subheading mb-3">Classifying Postings from r/AskMen and r/AskWomen</div>
-            <p>lorem ipsum</p>
+            <div class="subheading mb-3">Classifying Postings from r/AskMen and r/AskWomen
+            <a href="https://github.com/akeyes2394/reddit_classification" target="_blank">GitHub Link</a>
+            </div>
+            <p>My goal with this project was to try and determine if, in general, there are discernable differences between the language used by men and the language used by women.  The Reddit pages from which I drew language samples from in the form of postings, r/AskMen, and r/AskWomen.  These two communities are places where individuals can come to anonymously ask questions of men or women that they would not feel comfortable asking in person.
+            <br>
+            I used PushShift API in order to quickly scrape thousands of posts from each subreddit.  I ran some baseline models (Logistic Regression and Random Forest) and then tested some different language processing techniques to see what worked best.  I tokenized words, used regular expressions to eliminate non-normal words, and used the TFIDF Vectorizer to engineer my features.  Through a lengthy grid-searching process I settled on a RandomForest achieving an accuracy score of 75% and I was able to which words were the strongest predictors.
+            <br>
+            At one point during my analysis I realized that I had assumed in asking my original question that all posts on r/AskMen came from women, and vice versa men on r/AskMen.  In looking at just a few of the posts you can tell that this is not always the case, so the interpretation of results must reflect that as well.  We can say that rather than the results informing us about men and women’s language, we can say they inform us about the different topics concerning men and women that people, regardless of gender, are interested in.</p>
           </div>
         </div>
 
